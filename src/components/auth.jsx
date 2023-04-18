@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export function Auth({ setLoginUser }) {
     const [isLogin, setIsLogin] = useState(false)
-    const [errMsg, setErrMsg] = useState("")
+    const [errMsg, setErrMsg] = useState(null)
 
     const register = async (form) => {
         form.preventDefault()
@@ -56,15 +56,16 @@ export function Auth({ setLoginUser }) {
         }
 
         setLoginUser(username)
-        setErrMsg("")
+        setErrMsg(null)
 
         form.target.reset()
     } 
 
     return (
         <main className="auth-main">
-            <form className="auth-form" onSubmit={isLogin ? login : register} onFocus={() => errMsg}>
+            <form className="auth-form" onSubmit={isLogin ? login : register}>
                 <input type="text" className="name-input" name="name" placeholder="Enter username..." />
+                { errMsg !== null ? <p className="auth-error">{errMsg}</p> : <p></p>}
                 <span className="auth-btn-container">
                     <button type="submit" className="register-btn" onClick={() => setIsLogin(false)}>Register</button>
                     <button type="submit" className="login-btn" onClick={() => setIsLogin(true)}>Login</button>
