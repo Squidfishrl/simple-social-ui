@@ -1,0 +1,15 @@
+.post {
+  display: flex;
+  border: 0.5px solid black;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  justify-content: left;
+  align-content: flex-start;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: space-between;
+}
